@@ -56,27 +56,5 @@ namespace InfoDispositivoUSB
                 cmbPortaCom.Items.Add(device.SerialPort);
             }           
         }
-
-        private void brtSerialPort_Click(object sender, EventArgs e)
-        {
-            serialPort = new SerialPort();
-
-            rtbMonitor.AppendText(serialPort.PortName);
-            rtbMonitor.AppendText("\r\n");
-            rtbMonitor.AppendText(serialPort.BaudRate.ToString());
-            rtbMonitor.AppendText("\r\n");
-            rtbMonitor.AppendText(serialPort.Parity.ToString());
-            rtbMonitor.AppendText("\r\n");
-            rtbMonitor.AppendText(serialPort.DataBits.ToString());
-            rtbMonitor.AppendText("\r\n");
-            rtbMonitor.AppendText(serialPort.StopBits.ToString());
-            rtbMonitor.AppendText("\r\n");
-            rtbMonitor.AppendText(serialPort.Handshake.ToString());
-            rtbMonitor.AppendText("\r\n");
-            rtbMonitor.AppendText(serialPort.ReadTimeout.ToString());
-            rtbMonitor.AppendText("\r\n");
-
-
-        }
     }
 }

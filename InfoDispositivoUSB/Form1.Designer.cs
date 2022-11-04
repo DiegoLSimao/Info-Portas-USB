@@ -32,7 +32,6 @@
             this.rtbMonitor = new System.Windows.Forms.RichTextBox();
             this.btnLer = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.brtSerialPort = new System.Windows.Forms.Button();
             this.lblDLSTI = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -73,16 +72,6 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // brtSerialPort
-            // 
-            this.brtSerialPort.Location = new System.Drawing.Point(174, 390);
-            this.brtSerialPort.Name = "brtSerialPort";
-            this.brtSerialPort.Size = new System.Drawing.Size(75, 23);
-            this.brtSerialPort.TabIndex = 4;
-            this.brtSerialPort.Text = "Serial Port";
-            this.brtSerialPort.UseVisualStyleBackColor = true;
-            this.brtSerialPort.Click += new System.EventHandler(this.brtSerialPort_Click);
-            // 
             // lblDLSTI
             // 
             this.lblDLSTI.AutoSize = true;
@@ -98,7 +87,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblDLSTI);
-            this.Controls.Add(this.brtSerialPort);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnLer);
             this.Controls.Add(this.rtbMonitor);
@@ -117,7 +105,6 @@
         private System.Windows.Forms.RichTextBox rtbMonitor;
         private System.Windows.Forms.Button btnLer;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Button brtSerialPort;
         private System.Windows.Forms.Label lblDLSTI;
     }
 }
