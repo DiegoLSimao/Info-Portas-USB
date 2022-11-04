@@ -1,2 +1,2 @@
-# Info Portas USB
- Exibe Nome, Fabricante das portas COM
+# Informações das portas seriais COM!
+ Exibe Nome e o Fabricante das portas COM.
