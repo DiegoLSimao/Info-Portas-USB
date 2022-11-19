@@ -20,7 +20,7 @@ namespace InfoDispositivoUSB
             foreach (var device in USBDeviceInfo.GetUSBDevices())
             {
                 ExibirInformacoesUSB(device);
-            } 
+            }
         }
 
         private void ExibirInformacoesUSB(USBDeviceInfo porta)
@@ -43,7 +43,7 @@ namespace InfoDispositivoUSB
             USBDeviceInfo porta = USBDeviceInfo.GetDeviceInfo(cmbPortaCom.Text);
             ExibirInformacoesUSB(porta);
         }
-    
+
         private void Destacar(RichTextBox rc, IEnumerable<string> palavras)
         {
             foreach (var palavra in palavras)
@@ -86,7 +86,6 @@ namespace InfoDispositivoUSB
         void CopyAction(object sender, EventArgs e)
         {
             Clipboard.SetData(DataFormats.Rtf, rtbMonitor.SelectedRtf);
-            //Clipboard.Clear();
         }
 
         void PasteAction(object sender, EventArgs e)
@@ -111,6 +110,7 @@ namespace InfoDispositivoUSB
                 rtbMonitor.LoadFile(ofd.FileName, RichTextBoxStreamType.RichText);
 
             }
+
 
         }
 
@@ -141,5 +141,6 @@ namespace InfoDispositivoUSB
                 rtbMonitor.ContextMenu = contextMenu;
             }
         }
+
     }
 }
