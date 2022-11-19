@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InfoDispositivoUSB
@@ -48,15 +43,7 @@ namespace InfoDispositivoUSB
             USBDeviceInfo porta = USBDeviceInfo.GetDeviceInfo(cmbPortaCom.Text);
             ExibirInformacoesUSB(porta);
         }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            foreach (var device in USBDeviceInfo.GetUSBDevices())
-            {
-                cmbPortaCom.Items.Add(device.SerialPort);
-            }           
-        }
-
+    
         private void Destacar(RichTextBox rc, IEnumerable<string> palavras)
         {
             foreach (var palavra in palavras)
@@ -80,6 +67,79 @@ namespace InfoDispositivoUSB
         private void btnDestacar_Click(object sender, EventArgs e)
         {
             Destacar(rtbMonitor, txtDestacar.Text.Split(';'));
+        }
+
+        private void cmbPortaCom_DropDown(object sender, EventArgs e)
+        {
+            cmbPortaCom.Items.Clear();
+            foreach (var device in USBDeviceInfo.GetUSBDevices())
+            {
+                cmbPortaCom.Items.Add(device.SerialPort);
+            }
+        }
+
+        void CutAction(object sender, EventArgs e)
+        {
+            rtbMonitor.Cut();
+        }
+
+        void CopyAction(object sender, EventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Rtf, rtbMonitor.SelectedRtf);
+            //Clipboard.Clear();
+        }
+
+        void PasteAction(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText(TextDataFormat.Rtf))
+            {
+                rtbMonitor.SelectedRtf = Clipboard.GetData(DataFormats.Rtf).ToString();
+            }
+            else
+            {
+                rtbMonitor.AppendText(Clipboard.GetData(DataFormats.UnicodeText).ToString());
+            }
+        }
+
+        void OpenAction(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.DefaultExt = "*.rtf";
+            ofd.Filter = "RTF Files|*.rtf";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                rtbMonitor.LoadFile(ofd.FileName, RichTextBoxStreamType.RichText);
+
+            }
+
+        }
+
+
+        private void rtbMonitor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem menuItem;
+
+                menuItem = new MenuItem("Abrir rtf");
+                menuItem.Click += new EventHandler(OpenAction);
+                contextMenu.MenuItems.Add(menuItem);
+
+                menuItem = new MenuItem("Recortar");
+                menuItem.Click += new EventHandler(CutAction);
+                contextMenu.MenuItems.Add(menuItem);
+
+                menuItem = new MenuItem("Copiar");
+                menuItem.Click += new EventHandler(CopyAction);
+                contextMenu.MenuItems.Add(menuItem);
+
+                menuItem = new MenuItem("Colar");
+                menuItem.Click += new EventHandler(PasteAction);
+                contextMenu.MenuItems.Add(menuItem);
+
+                rtbMonitor.ContextMenu = contextMenu;
+            }
         }
     }
 }

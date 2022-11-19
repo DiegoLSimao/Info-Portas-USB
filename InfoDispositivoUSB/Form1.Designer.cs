@@ -44,6 +44,7 @@
             this.cmbPortaCom.Name = "cmbPortaCom";
             this.cmbPortaCom.Size = new System.Drawing.Size(121, 21);
             this.cmbPortaCom.TabIndex = 0;
+            this.cmbPortaCom.DropDown += new System.EventHandler(this.cmbPortaCom_DropDown);
             this.cmbPortaCom.SelectedIndexChanged += new System.EventHandler(this.cmbPortaCom_SelectedIndexChanged);
             // 
             // rtbMonitor
@@ -53,6 +54,7 @@
             this.rtbMonitor.Size = new System.Drawing.Size(776, 336);
             this.rtbMonitor.TabIndex = 1;
             this.rtbMonitor.Text = "";
+            this.rtbMonitor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rtbMonitor_MouseDown);
             // 
             // btnLer
             // 
@@ -114,7 +116,6 @@
             this.Controls.Add(this.cmbPortaCom);
             this.Name = "frmMain";
             this.Text = "Informações dos dispositivos USB";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
