@@ -107,10 +107,25 @@ namespace InfoDispositivoUSB
             ofd.Filter = "RTF Files|*.rtf";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                rtbMonitor.LoadFile(ofd.FileName, RichTextBoxStreamType.RichText);
-
+                AbrirArquivo(ofd.FileName, RichTextBoxStreamType.RichText);
             }
 
+        }
+
+        void OpenTXTAction(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.DefaultExt = "*.txt";
+            ofd.Filter = "TXT Files|*.txt";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                AbrirArquivo(ofd.FileName, RichTextBoxStreamType.PlainText);
+            }
+        }
+
+        private void AbrirArquivo(string file, RichTextBoxStreamType type)
+        {
+            rtbMonitor.LoadFile(file, type);
 
         }
 
@@ -124,6 +139,10 @@ namespace InfoDispositivoUSB
 
                 menuItem = new MenuItem("Abrir rtf");
                 menuItem.Click += new EventHandler(OpenAction);
+                contextMenu.MenuItems.Add(menuItem);
+
+                menuItem = new MenuItem("Abrir txt");
+                menuItem.Click += new EventHandler(OpenTXTAction);
                 contextMenu.MenuItems.Add(menuItem);
 
                 menuItem = new MenuItem("Recortar");
