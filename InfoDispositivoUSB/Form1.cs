@@ -56,5 +56,30 @@ namespace InfoDispositivoUSB
                 cmbPortaCom.Items.Add(device.SerialPort);
             }           
         }
+
+        private void Destacar(RichTextBox rc, IEnumerable<string> palavras)
+        {
+            foreach (var palavra in palavras)
+            {
+                int posicao = 0;
+                while (posicao > -1)
+                {
+                    posicao = rc.Text.IndexOf(palavra, posicao);
+                    if (posicao > -1)
+                    {
+                        rc.Select(posicao, palavra.Length);
+                        rc.SelectionBackColor = Color.GreenYellow;
+                        rc.SelectionColor = Color.Red;
+                        rc.Select(0, 0);
+                        posicao += palavra.Length;
+                    }
+                }
+            }
+        }
+
+        private void btnDestacar_Click(object sender, EventArgs e)
+        {
+            Destacar(rtbMonitor, txtDestacar.Text.Split(';'));
+        }
     }
 }
