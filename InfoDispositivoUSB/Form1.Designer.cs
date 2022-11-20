@@ -34,12 +34,14 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnDestacar = new System.Windows.Forms.Button();
             this.txtDestacar = new System.Windows.Forms.TextBox();
+            this.pgbarProgresso = new System.Windows.Forms.ProgressBar();
+            this.btnBarraTemporizada = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbPortaCom
             // 
             this.cmbPortaCom.FormattingEnabled = true;
-            this.cmbPortaCom.Location = new System.Drawing.Point(171, 535);
+            this.cmbPortaCom.Location = new System.Drawing.Point(169, 537);
             this.cmbPortaCom.Name = "cmbPortaCom";
             this.cmbPortaCom.Size = new System.Drawing.Size(121, 21);
             this.cmbPortaCom.TabIndex = 0;
@@ -51,14 +53,14 @@
             this.rtbMonitor.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtbMonitor.Location = new System.Drawing.Point(0, 0);
             this.rtbMonitor.Name = "rtbMonitor";
-            this.rtbMonitor.Size = new System.Drawing.Size(859, 527);
+            this.rtbMonitor.Size = new System.Drawing.Size(1086, 527);
             this.rtbMonitor.TabIndex = 1;
             this.rtbMonitor.Text = "";
             this.rtbMonitor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rtbMonitor_MouseDown);
             // 
             // btnLer
             // 
-            this.btnLer.Location = new System.Drawing.Point(9, 533);
+            this.btnLer.Location = new System.Drawing.Point(7, 535);
             this.btnLer.Name = "btnLer";
             this.btnLer.Size = new System.Drawing.Size(75, 23);
             this.btnLer.TabIndex = 2;
@@ -68,7 +70,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(90, 533);
+            this.btnLimpar.Location = new System.Drawing.Point(88, 535);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 3;
@@ -78,7 +80,7 @@
             // 
             // btnDestacar
             // 
-            this.btnDestacar.Location = new System.Drawing.Point(171, 558);
+            this.btnDestacar.Location = new System.Drawing.Point(169, 560);
             this.btnDestacar.Name = "btnDestacar";
             this.btnDestacar.Size = new System.Drawing.Size(75, 23);
             this.btnDestacar.TabIndex = 6;
@@ -88,16 +90,37 @@
             // 
             // txtDestacar
             // 
-            this.txtDestacar.Location = new System.Drawing.Point(9, 561);
+            this.txtDestacar.Location = new System.Drawing.Point(7, 563);
             this.txtDestacar.Name = "txtDestacar";
             this.txtDestacar.Size = new System.Drawing.Size(156, 20);
             this.txtDestacar.TabIndex = 7;
+            // 
+            // pgbarProgresso
+            // 
+            this.pgbarProgresso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgbarProgresso.Location = new System.Drawing.Point(7, 586);
+            this.pgbarProgresso.Name = "pgbarProgresso";
+            this.pgbarProgresso.Size = new System.Drawing.Size(1074, 10);
+            this.pgbarProgresso.TabIndex = 8;
+            // 
+            // btnBarraTemporizada
+            // 
+            this.btnBarraTemporizada.Location = new System.Drawing.Point(250, 560);
+            this.btnBarraTemporizada.Name = "btnBarraTemporizada";
+            this.btnBarraTemporizada.Size = new System.Drawing.Size(75, 23);
+            this.btnBarraTemporizada.TabIndex = 9;
+            this.btnBarraTemporizada.Text = "Barra Tempo";
+            this.btnBarraTemporizada.UseVisualStyleBackColor = true;
+            this.btnBarraTemporizada.Click += new System.EventHandler(this.btnBarraTemporizada_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 593);
+            this.ClientSize = new System.Drawing.Size(1086, 605);
+            this.Controls.Add(this.btnBarraTemporizada);
+            this.Controls.Add(this.pgbarProgresso);
             this.Controls.Add(this.txtDestacar);
             this.Controls.Add(this.btnDestacar);
             this.Controls.Add(this.btnLimpar);
@@ -119,6 +142,8 @@
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnDestacar;
         private System.Windows.Forms.TextBox txtDestacar;
+        private System.Windows.Forms.ProgressBar pgbarProgresso;
+        private System.Windows.Forms.Button btnBarraTemporizada;
     }
 }
 

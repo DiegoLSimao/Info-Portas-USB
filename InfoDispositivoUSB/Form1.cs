@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
+using System.Threading;
 using System.Windows.Forms;
+using System.Timers;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace InfoDispositivoUSB
 {
     public partial class frmMain : Form
     {
-        static SerialPort serialPort;
+        Stopwatch sw = new Stopwatch();
+        int estado;
+        int tempomsProgressBar;
 
         public frmMain()
         {
@@ -66,7 +72,7 @@ namespace InfoDispositivoUSB
 
         private void btnDestacar_Click(object sender, EventArgs e)
         {
-            Destacar(rtbMonitor, txtDestacar.Text.Split(';'));
+            Destacar(rtbMonitor, txtDestacar.Text.Split(';'));        
         }
 
         private void cmbPortaCom_DropDown(object sender, EventArgs e)
@@ -161,5 +167,81 @@ namespace InfoDispositivoUSB
             }
         }
 
+        private void ProgressBarEmSegundoPlano()
+        {
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+     
+            //***trabalho
+            worker.DoWork += (s, e) =>
+            {
+                while (estado != 3)
+                {
+                    worker.ReportProgress(1);
+                    Thread.Sleep(100);
+                }                                        
+            };
+            //***Progresso
+            worker.ProgressChanged += (s, e) =>
+            {
+                BarraTemporizada();
+            };
+            //***ao concluir 
+            worker.RunWorkerCompleted += (s, e) =>
+            {
+
+
+            };
+            worker.RunWorkerAsync();          
+        }
+
+        
+        private void StartProgressBarTemporizado(int tempoms)
+        {
+            estado = 0;
+            tempomsProgressBar = tempoms;
+            ProgressBarEmSegundoPlano();
+        }
+
+        private void BarraTemporizada()
+        {
+            switch (estado)
+            {
+                case 0:     
+                    sw.Restart();
+                    pgbarProgresso.Value = 0;
+                    pgbarProgresso.Maximum = tempomsProgressBar;
+                    estado++;
+                    break;
+
+                case 1:
+                    if (sw.ElapsedMilliseconds < pgbarProgresso.Maximum)
+                    {
+                        pgbarProgresso.Value = (int)sw.ElapsedMilliseconds;
+                        return;
+                    }
+                    estado++;
+                    break;
+
+                case 2: 
+                    pgbarProgresso.Value = tempomsProgressBar;
+                    estado++;
+                    sw.Stop();
+                    break;
+
+                case 3:
+                    break;
+            }
+
+        }
+
+        private void btnBarraTemporizada_Click(object sender, EventArgs e)
+        {
+            if(int.TryParse(txtDestacar.Text,out int result))
+            {
+                StartProgressBarTemporizado(result);
+            }
+            
+        }
     }
 }
