@@ -32,7 +32,6 @@
             this.rtbMonitor = new System.Windows.Forms.RichTextBox();
             this.btnLer = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.lblDLSTI = new System.Windows.Forms.Label();
             this.btnDestacar = new System.Windows.Forms.Button();
             this.txtDestacar = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -40,7 +39,7 @@
             // cmbPortaCom
             // 
             this.cmbPortaCom.FormattingEnabled = true;
-            this.cmbPortaCom.Location = new System.Drawing.Point(12, 12);
+            this.cmbPortaCom.Location = new System.Drawing.Point(171, 535);
             this.cmbPortaCom.Name = "cmbPortaCom";
             this.cmbPortaCom.Size = new System.Drawing.Size(121, 21);
             this.cmbPortaCom.TabIndex = 0;
@@ -49,16 +48,17 @@
             // 
             // rtbMonitor
             // 
-            this.rtbMonitor.Location = new System.Drawing.Point(12, 48);
+            this.rtbMonitor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rtbMonitor.Location = new System.Drawing.Point(0, 0);
             this.rtbMonitor.Name = "rtbMonitor";
-            this.rtbMonitor.Size = new System.Drawing.Size(776, 336);
+            this.rtbMonitor.Size = new System.Drawing.Size(859, 527);
             this.rtbMonitor.TabIndex = 1;
             this.rtbMonitor.Text = "";
             this.rtbMonitor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rtbMonitor_MouseDown);
             // 
             // btnLer
             // 
-            this.btnLer.Location = new System.Drawing.Point(12, 390);
+            this.btnLer.Location = new System.Drawing.Point(9, 533);
             this.btnLer.Name = "btnLer";
             this.btnLer.Size = new System.Drawing.Size(75, 23);
             this.btnLer.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(93, 390);
+            this.btnLimpar.Location = new System.Drawing.Point(90, 533);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 3;
@@ -76,18 +76,9 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // lblDLSTI
-            // 
-            this.lblDLSTI.AutoSize = true;
-            this.lblDLSTI.Location = new System.Drawing.Point(554, 428);
-            this.lblDLSTI.Name = "lblDLSTI";
-            this.lblDLSTI.Size = new System.Drawing.Size(234, 13);
-            this.lblDLSTI.TabIndex = 5;
-            this.lblDLSTI.Text = "Diego de Lima Simão Tecnologia da Informação";
-            // 
             // btnDestacar
             // 
-            this.btnDestacar.Location = new System.Drawing.Point(174, 415);
+            this.btnDestacar.Location = new System.Drawing.Point(171, 558);
             this.btnDestacar.Name = "btnDestacar";
             this.btnDestacar.Size = new System.Drawing.Size(75, 23);
             this.btnDestacar.TabIndex = 6;
@@ -97,7 +88,7 @@
             // 
             // txtDestacar
             // 
-            this.txtDestacar.Location = new System.Drawing.Point(12, 418);
+            this.txtDestacar.Location = new System.Drawing.Point(9, 561);
             this.txtDestacar.Name = "txtDestacar";
             this.txtDestacar.Size = new System.Drawing.Size(156, 20);
             this.txtDestacar.TabIndex = 7;
@@ -106,10 +97,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(859, 593);
             this.Controls.Add(this.txtDestacar);
             this.Controls.Add(this.btnDestacar);
-            this.Controls.Add(this.lblDLSTI);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnLer);
             this.Controls.Add(this.rtbMonitor);
@@ -127,7 +117,6 @@
         private System.Windows.Forms.RichTextBox rtbMonitor;
         private System.Windows.Forms.Button btnLer;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Label lblDLSTI;
         private System.Windows.Forms.Button btnDestacar;
         private System.Windows.Forms.TextBox txtDestacar;
     }
