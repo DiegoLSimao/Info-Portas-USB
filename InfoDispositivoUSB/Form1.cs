@@ -13,7 +13,7 @@ namespace InfoDispositivoUSB
     public partial class frmMain : Form
     {
         Stopwatch sw = new Stopwatch();
-        int estado;
+        int estadoBarraProgresso;
         int tempomsProgressBar;
 
         public frmMain()
@@ -166,16 +166,21 @@ namespace InfoDispositivoUSB
                 rtbMonitor.ContextMenu = contextMenu;
             }
         }
+        private void StartProgressBarTemporizado(int tempoms)
+        {
+            estadoBarraProgresso = 0;
+            tempomsProgressBar = tempoms;
+            BarraProgressoEmSegundoPlano();
+        }
 
-        private void ProgressBarEmSegundoPlano()
+        private void BarraProgressoEmSegundoPlano()
         {
             BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-     
+            worker.WorkerReportsProgress = true; 
             //***trabalho
             worker.DoWork += (s, e) =>
             {
-                while (estado != 3)
+                while (estadoBarraProgresso != 3)
                 {
                     worker.ReportProgress(1);
                     Thread.Sleep(100);
@@ -184,34 +189,25 @@ namespace InfoDispositivoUSB
             //***Progresso
             worker.ProgressChanged += (s, e) =>
             {
-                BarraTemporizada();
+                ProcessamentoBarraProgresso();
             };
-            //***ao concluir 
+            //***Ao concluir
             worker.RunWorkerCompleted += (s, e) =>
             {
-
-
+                MessageBox.Show("Barra Finalizada");
             };
             worker.RunWorkerAsync();          
         }
 
-        
-        private void StartProgressBarTemporizado(int tempoms)
+        private void ProcessamentoBarraProgresso()
         {
-            estado = 0;
-            tempomsProgressBar = tempoms;
-            ProgressBarEmSegundoPlano();
-        }
-
-        private void BarraTemporizada()
-        {
-            switch (estado)
+            switch (estadoBarraProgresso)
             {
                 case 0:     
                     sw.Restart();
                     pgbarProgresso.Value = 0;
                     pgbarProgresso.Maximum = tempomsProgressBar;
-                    estado++;
+                    estadoBarraProgresso++;
                     break;
 
                 case 1:
@@ -220,19 +216,19 @@ namespace InfoDispositivoUSB
                         pgbarProgresso.Value = (int)sw.ElapsedMilliseconds;
                         return;
                     }
-                    estado++;
+                    estadoBarraProgresso++;
                     break;
 
                 case 2: 
                     pgbarProgresso.Value = tempomsProgressBar;
-                    estado++;
+                    estadoBarraProgresso++;
                     sw.Stop();
                     break;
 
                 case 3:
+                        
                     break;
             }
-
         }
 
         private void btnBarraTemporizada_Click(object sender, EventArgs e)
