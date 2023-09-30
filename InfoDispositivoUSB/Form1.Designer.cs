@@ -36,6 +36,7 @@
             this.txtDestacar = new System.Windows.Forms.TextBox();
             this.pgbarProgresso = new System.Windows.Forms.ProgressBar();
             this.btnBarraTemporizada = new System.Windows.Forms.Button();
+            this.btnConectar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbPortaCom
@@ -114,11 +115,22 @@
             this.btnBarraTemporizada.UseVisualStyleBackColor = true;
             this.btnBarraTemporizada.Click += new System.EventHandler(this.btnBarraTemporizada_Click);
             // 
+            // btnConectar
+            // 
+            this.btnConectar.Location = new System.Drawing.Point(369, 541);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(143, 41);
+            this.btnConectar.TabIndex = 10;
+            this.btnConectar.Text = "Conectar";
+            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.Conectar_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 605);
+            this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.btnBarraTemporizada);
             this.Controls.Add(this.pgbarProgresso);
             this.Controls.Add(this.txtDestacar);
@@ -144,6 +156,7 @@
         private System.Windows.Forms.TextBox txtDestacar;
         private System.Windows.Forms.ProgressBar pgbarProgresso;
         private System.Windows.Forms.Button btnBarraTemporizada;
+        private System.Windows.Forms.Button btnConectar;
     }
 }
 

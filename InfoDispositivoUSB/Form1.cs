@@ -12,6 +12,8 @@ namespace InfoDispositivoUSB
 {
     public partial class frmMain : Form
     {
+        private SerialPort portaSerial;
+        private BackgroundWorker backgroundWorker;
         Stopwatch sw = new Stopwatch();
         int estadoBarraProgresso;
         int tempomsProgressBar;
@@ -239,5 +241,55 @@ namespace InfoDispositivoUSB
             }
             
         }
+
+        private void Conectar_Click(object sender, EventArgs e)
+        {
+            if(portaSerial ==null)
+            {
+                portaSerial = new SerialPort();
+                portaSerial.PortName = cmbPortaCom.Text;
+                portaSerial.BaudRate = 115200;
+                portaSerial.DataBits = 8;
+                portaSerial.Parity = Parity.None;
+                portaSerial.StopBits = StopBits.One;
+                portaSerial.Handshake = Handshake.None;
+                portaSerial.ReadBufferSize= 1024*2;
+                portaSerial.DataReceived += PortaSerial_DataReceived;
+            }
+
+            try
+            {
+                if(portaSerial.IsOpen)
+                {
+                    portaSerial.Close();
+                    btnConectar.Text = "Com Fechada";
+                }
+                else
+                {
+                    portaSerial.Open(); // Abre a porta serial
+                    btnConectar.Text = "Com Aberta";
+                }
+            }
+            catch (Exception ex)
+            {
+                rtbMonitor.AppendText($"ERRO: {ex.Message}");
+            }
+
+        }
+
+        private void PortaSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            var x = e;
+
+            // Você deve sinalizar para a thread da interface do usuário que deseja atualizar a interface
+            BeginInvoke(new Action(() =>
+            {
+                // Agora você pode atualizar a interface do usuário com os dados recebidos
+                SerialPort sp = (SerialPort)sender;
+                rtbMonitor.AppendText($"{sp.ReadLine()}");
+            }));
+            Thread.Sleep(500);
+        }
+
     }
 }
