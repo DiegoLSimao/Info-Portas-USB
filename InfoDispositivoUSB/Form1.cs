@@ -291,5 +291,9 @@ namespace InfoDispositivoUSB
             Thread.Sleep(500);
         }
 
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+            portaSerial.WriteLine(txtDestacar.Text);
+        }
     }
 }

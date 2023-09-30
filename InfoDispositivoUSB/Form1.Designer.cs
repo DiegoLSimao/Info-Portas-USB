@@ -37,6 +37,7 @@
             this.pgbarProgresso = new System.Windows.Forms.ProgressBar();
             this.btnBarraTemporizada = new System.Windows.Forms.Button();
             this.btnConectar = new System.Windows.Forms.Button();
+            this.btnEnviar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbPortaCom
@@ -125,11 +126,22 @@
             this.btnConectar.UseVisualStyleBackColor = true;
             this.btnConectar.Click += new System.EventHandler(this.Conectar_Click);
             // 
+            // btnEnviar
+            // 
+            this.btnEnviar.Location = new System.Drawing.Point(532, 542);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(143, 41);
+            this.btnEnviar.TabIndex = 11;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 605);
+            this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.btnBarraTemporizada);
             this.Controls.Add(this.pgbarProgresso);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.ProgressBar pgbarProgresso;
         private System.Windows.Forms.Button btnBarraTemporizada;
         private System.Windows.Forms.Button btnConectar;
+        private System.Windows.Forms.Button btnEnviar;
     }
 }
 
