@@ -38,6 +38,7 @@
             this.btnBarraTemporizada = new System.Windows.Forms.Button();
             this.btnConectar = new System.Windows.Forms.Button();
             this.btnEnviar = new System.Windows.Forms.Button();
+            this.chkboxAutoScroll = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // cmbPortaCom
@@ -58,6 +59,7 @@
             this.rtbMonitor.Size = new System.Drawing.Size(1086, 527);
             this.rtbMonitor.TabIndex = 1;
             this.rtbMonitor.Text = "";
+            this.rtbMonitor.TextChanged += new System.EventHandler(this.rtbMonitor_TextChanged);
             this.rtbMonitor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rtbMonitor_MouseDown);
             // 
             // btnLer
@@ -136,11 +138,22 @@
             this.btnEnviar.UseVisualStyleBackColor = true;
             this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
+            // chkboxAutoScroll
+            // 
+            this.chkboxAutoScroll.AutoSize = true;
+            this.chkboxAutoScroll.Location = new System.Drawing.Point(722, 559);
+            this.chkboxAutoScroll.Name = "chkboxAutoScroll";
+            this.chkboxAutoScroll.Size = new System.Drawing.Size(77, 17);
+            this.chkboxAutoScroll.TabIndex = 12;
+            this.chkboxAutoScroll.Text = "Auto Scroll";
+            this.chkboxAutoScroll.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 605);
+            this.Controls.Add(this.chkboxAutoScroll);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.btnBarraTemporizada);
@@ -170,6 +183,7 @@
         private System.Windows.Forms.Button btnBarraTemporizada;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.Button btnEnviar;
+        private System.Windows.Forms.CheckBox chkboxAutoScroll;
     }
 }
 

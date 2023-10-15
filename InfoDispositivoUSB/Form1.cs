@@ -295,5 +295,14 @@ namespace InfoDispositivoUSB
         {
             portaSerial.WriteLine(txtDestacar.Text);
         }
+
+        private void rtbMonitor_TextChanged(object sender, EventArgs e)
+        {
+            if(chkboxAutoScroll.Checked)
+            {
+                rtbMonitor.SelectionStart = rtbMonitor.Text.Length;
+                rtbMonitor.ScrollToCaret();
+            }
+        }
     }
 }
